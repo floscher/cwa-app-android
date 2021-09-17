@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.transition.MaterialContainerTransform
+import com.google.android.material.transition.MaterialSharedAxis
 import com.google.zxing.BarcodeFormat
 import com.journeyapps.barcodescanner.DefaultDecoderFactory
 import de.rki.coronawarnapp.R
@@ -60,9 +61,8 @@ class QrCodeScannerFragment : Fragment(R.layout.fragment_qrcode_scanner), AutoIn
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val materialContainerTransform = MaterialContainerTransform()
-        sharedElementEnterTransition = materialContainerTransform
-        sharedElementReturnTransition = materialContainerTransform
+        enterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true)
+        returnTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

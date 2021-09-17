@@ -92,6 +92,11 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
         binding.mainBottomNavigation.setupWithNavController2(navController) {
             vm.onBottomNavSelected()
         }
+
+        binding.fab.setOnClickListener {
+            navController.navigate(R.id.universalScanner)
+        }
+
         vm.isContactDiaryOnboardingDone.observe(this) { isOnboardingDone ->
             startContactDiaryNestedGraphDestination(navController, isOnboardingDone)
         }
